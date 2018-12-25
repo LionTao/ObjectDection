@@ -5,6 +5,8 @@
 *.jpg
 *.png
 *.caffemodel
+.idea/**/*.xml
+.idea/**/*.iml
 #*.prototxt.txt
 *.h5
 # User-specific stuff

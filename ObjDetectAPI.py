@@ -1,4 +1,4 @@
-from example import do_object_detection as detect
+from opencvdnn import do_object_detection as detect
 import os
 
 
