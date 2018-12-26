@@ -1,4 +1,4 @@
-from opencvdnn import do_object_detection as detect
+from modules.ObjectDetection.opencvdnn import do_object_detection as detect
 import os
 
 

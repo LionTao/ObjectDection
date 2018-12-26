@@ -1,22 +1,10 @@
 # import the necessary packages
 import numpy as np
-import argparse
 import cv2
 
-# construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--image", required=False, default="timg.jpg",
-                help="path to input image")
-ap.add_argument("-p", "--prototxt", required=False, default="MobileNetSSD_deploy.prototxt.txt",
-                help="path to Caffe 'deploy' prototxt file")
-ap.add_argument("-m", "--model", required=False, default="MobileNetSSD_deploy.caffemodel",
-                help="path to Caffe pre-trained model")
-ap.add_argument("-c", "--confidence", type=float, default=0.4,
-                help="minimum probability to filter weak detections")
-args = vars(ap.parse_args())
 
-
-def do_object_detection(path,prototxt="MobileNetSSD_deploy.prototxt.txt", model="MobileNetSSD_deploy.caffemodel"):
+def do_object_detection(path, prototxt="MobileNetSSD_deploy.prototxt.txt", model="MobileNetSSD_deploy.caffemodel",
+                        confidence_threshold=0.4):
     CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
                "bottle", "bus", "car", "cat", "chair", "cow", "diningtable",
                "dog", "horse", "motorbike", "person", "pottedplant", "sheep",
@@ -49,7 +37,7 @@ def do_object_detection(path,prototxt="MobileNetSSD_deploy.prototxt.txt", model=
         confidence = detections[0, 0, i, 2]
         # filter out weak detections by ensuring the `confidence` is
         # greater than the minimum confidence
-        if confidence > args["confidence"]:
+        if confidence > confidence_threshold:
             # extract the index of the class label from the `detections`,
             # then compute the (x, y)-coordinates of the bounding box for
             # the object
@@ -81,6 +69,6 @@ def do_object_detection(path,prototxt="MobileNetSSD_deploy.prototxt.txt", model=
 
 
 if __name__ == '__main__':
-    image, label = do_object_detection()
-    cv2.imshow("213", image)
+    image, label = do_object_detection(path="image.jpg")
+    cv2.imshow("result", image)
     cv2.waitKey(0)
