@@ -58,7 +58,7 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
-
+**/__pycache__/*
 /opencv_objdetect.py
 /common.py
 /tf_text_graph_common.py
