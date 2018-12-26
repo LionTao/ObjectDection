@@ -59,3 +59,8 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+/opencv_objdetect.py
+/common.py
+/tf_text_graph_common.py
+/tf_text_graph_ssd.py
+/tf_text_graph_faster_rcnn.py

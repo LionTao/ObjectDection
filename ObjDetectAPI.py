@@ -10,6 +10,11 @@ def obj_dection(path, network="MobileNet"):
         raise Exception("Network not existed")
 
     if os.path.exists(path) and os.path.isfile(path) and os.path.isfile(prototxt) and os.path.isfile(model):
-        return detect(path, prototxt=prototxt, model=model)
+        image,category=detect(path, prototxt=prototxt, model=model)
+        return image,category
     else:
         raise FileExistsError
+
+if __name__ == '__main__':
+    _,r=obj_dection(path="image.jpg")
+    print(r)
